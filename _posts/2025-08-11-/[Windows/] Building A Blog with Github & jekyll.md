@@ -1,6 +1,6 @@
 ---
 title: \[Windows\] Building A Blog with Github & jekyll
-date: YYYY-MM-DD HH:MM:SS +/-TTTT
+date: 2025-08-11 18:30:00 +09:00
 categories: [ETC., how_to_build_a_personal_blog]
 tags: [Github, Github_Action, jekyll, Ruby]     # TAG names should always be lowercase
 ---
