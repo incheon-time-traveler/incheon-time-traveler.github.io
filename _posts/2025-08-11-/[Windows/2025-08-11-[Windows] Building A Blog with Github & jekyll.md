@@ -4,6 +4,7 @@ date: 2025-08-11 18:30:00 +09:00
 last_modified_at: 2025-08-12 10:48:00, +09:00
 categories: [ETC., how_to_build_a_personal_blog]
 tags: [Github, Github Action, Jekyll, Ruby, Blog, Chirpy]     # TAG names should always be lowercase
+description: Common Challenges When Building a Jekyll Blog on Windows
 ---
 
 ## I Built My Blog!

@@ -39,11 +39,10 @@ social:
   email: gongsam99@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    -  # change to your Twitter homepage
     - https://github.com/Yeyeong99 # change to your GitHub homepage
+    - https://www.linkedin.com/in/yeyeong99 # change to your LinkedIn homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    - https://www.linkedin.com/in/yeyeong99 # change to your LinkedIn homepage
 
 # Site Verification Settings
 webmaster_verifications:
