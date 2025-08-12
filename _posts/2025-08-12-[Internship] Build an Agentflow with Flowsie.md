@@ -65,4 +65,56 @@ It enables:
     - Each node in the graph receives the current state and can return an updated version, managing the entire flow of data.
     - This approach also naturally supports features like Human-in-the-loop, where execution can be paused for user input.
 
+## Building A Simple Multi-Agent System
+### Key Nodes
+#### Condition Node
+- This node is conceptually imilar to LangGraph's `add_conditional_edges` method.
+- It routes the workflow based on pre-defined, fixed critria
 
+#### Condition Agent Node
+This powerful node routes the workflow by categorizing user input into different scenarios. What makes it special is that this routing logic is controlled by natural language instructions, eliminating the need for custom code.
+
+For comparison, here is how you could implement similar routing logic using LangGraph:
+```python
+from langgraph.graph import StateGraph
+from langgraph.pregel import ToolNode
+from typing import TypedDict, Literal
+
+# Define the state object that will be passed between nodes
+class State(TypedDict):
+    user_input: str
+    # The category will be determined by the classifier node
+    category: Literal["weather", "general", "other"]
+
+# This node uses an LLM to classify the user's input
+def classify(state: State):
+    prompt = f"Classify the following query: {state['user_input']} into one of the following categories: weather, general, or other."
+    result = llm.invoke(prompt)
+    # The parsed result updates the 'category' in our state
+    state["category"] = parse_result(result) 
+    return state
+
+# Define the state machine graph
+graph = StateGraph(State)
+
+# Add all the nodes to the graph
+graph.add_node("classify", classify)
+graph.add_node("weather_handler", handle_weather)
+graph.add_node("general_handler", handle_general)
+graph.add_node("other_handler", handle_other)
+
+# The conditional edge directs the flow based on the 'category' key in the state
+graph.add_conditional_edges(
+    "classify", # The source node
+    lambda state: state["category"], # The function that determines the route
+    { # A mapping from the function's output to the next node
+        "weather": "weather_handler",
+        "general": "general_handler",
+        "other": "other_handler",
+    }
+)
+
+# Set the entry point and compile the graph into a runnable workflow
+graph.set_entry_point("classify")
+workflow = graph.compile()
+```
