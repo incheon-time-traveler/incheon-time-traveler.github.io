@@ -124,7 +124,7 @@ workflow = graph.compile()
 
 [Practice this tutorial via the official docs](https://docs.flowiseai.com/tutorials/agentic-rag#step-2-adding-query-validation)
 
-### Difference between Agentic RAG and General RAG
+### Difference between Agentic RAG and Standard RAG
 An Agentic RAG system enhances a standard RAG system with several key capabilities:
 
 1. Query Validation & Categorization: It first analyzes the user's input to understand its intent.
