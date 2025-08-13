@@ -1,8 +1,9 @@
 ---
-title: "[Internship] Build an Agentflow with Flowsie"
+title: "[Internship] Build a Agentic RAG System with Flowsie"
 date: 2025-08-12 13:15:00 +09:00
+last_modified_at: 2025-08-13 10:48:00, +09:00
 categories: [Internship, AI Workflow Builder]
-tags: [Flowise, Low-code LLM Platform, AI workflow builder, LLM, RAG, Internship]     # TAG names should always be lowercase
+tags: [Flowise, Low-code LLM Platform, AI workflow builder, LLM, RAG, RAG Agent, Internship]     # TAG names should always be lowercase
 description: An Exploration of a Key Concept in Flowise Agentflow, with a Comparison to LangChain and LangGraph.
 ---
 
@@ -65,7 +66,7 @@ It enables:
     - Each node in the graph receives the current state and can return an updated version, managing the entire flow of data.
     - This approach also naturally supports features like Human-in-the-loop, where execution can be paused for user input.
 
-## Building A Simple Multi-Agent System
+## Agentflow in Flowise
 ### Key Nodes
 #### Condition Node
 - This node is conceptually imilar to LangGraph's `add_conditional_edges` method.
@@ -118,3 +119,23 @@ graph.add_conditional_edges(
 graph.set_entry_point("classify")
 workflow = graph.compile()
 ```
+## Building a Simple Agentic RAG System
+![Agentic RAG Flow. Start node - Condition Agent to validate query - LLM node for query generation | LLM node for general response - Vector DB Retriever node - Document relevance check node - LLM node for general response | LLM node for final response - Loop node](https://docs.flowiseai.com/~gitbook/image?url=https%3A%2F%2F823733684-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F00tYLwhz5RyR7fJEhrWy%252Fuploads%252FvqsOL3lc2hKQ2rq5IZpW%252Fimage.png%3Falt%3Dmedia%26token%3D8b3121f8-836a-494c-a881-5f5c9ee96102&width=400&dpr=3&quality=100&sign=ce56d133&sv=2)_Image from Official Flowise Docs_
+
+[Practice this tutorial via the official docs](https://docs.flowiseai.com/tutorials/agentic-rag#step-2-adding-query-validation)
+
+### Difference between Agentic RAG and General RAG
+An Agentic RAG system enhances a standard RAG system with several key capabilities:
+
+1. Query Validation & Categorization: It first analyzes the user's input to understand its intent.
+
+2. Optimized Query Generation: It creates optimized queries specifically for searching the Vector Database (VDB).
+
+3. **Relevance Evaluation**: It assesses whether the retrieved documents are actually relevant to the user's query.
+
+4. Self-Correction: It can identify irrelevant results and correct its course to find better ones.
+
+### Key Differentiators
+- Conditional Agent Node(Decision Points): Agentic RAG systems use agents to create decision points that dynamically determine the next step in the workflow. This allows the agent to make flexible, context-aware decisions rather than following a fixed path.
+
+- Loop-Back Mechanism: If the generated results are unsatisfactory or irrelevant, a Loop Node can re-execute a specific part of the flow to try again, improving the final output.
