@@ -4,6 +4,8 @@ date: 2025-08-14 16:30:00 +09:00
 categories: [Internship, Tasks]
 tags: [Chatbot, QA, Internship]     # TAG names should always be lowercase
 description: Five question categories I use to evaluate the quality of a RAG-based chatbot.
+language: en
+postid: 3
 ---
 
 ## Working as an AI Service QA Engineer
@@ -31,7 +33,7 @@ At my internship, I was hired as an AI low-code platform engineer. In this role,
 
 #### 1) Testing with expressions like "today," "this year," "the day before yesterday," and "recently."
 
-- Reasoning: Users naturally expect a system to understand common-sense information (당연한 정보), so it's crucial to verify if the service has a concept of time.
+- Reasoning: Users naturally expect a system to understand common-sense information, so it's crucial to verify if the service has a concept of time.
 
 - Implementation Note: If it fails to recognize the correct date and time, a tool like Flowise's Get Datetime node can be used to provide this capability.
 
