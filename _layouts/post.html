@@ -17,35 +17,6 @@ script_includes:
   "postid", postid | where: "language", "en" | first %} {% assign ko_post =
   site.posts | where: "postid", postid | where: "language", "ko" | first %}
 
-  <div class="mb-3">
-    <button
-      id="btn-en"
-      class="btn btn-outline-secondary btn-sm {% if page.language == 'en' %}active{% endif %}"
-      {%
-      unless
-      en_post
-      %}style="display:none;"
-      {%
-      endunless
-      %}
-    >
-      EN
-    </button>
-    <button
-      id="btn-ko"
-      class="btn btn-outline-secondary btn-sm {% if page.language == 'ko' %}active{% endif %}"
-      {%
-      unless
-      ko_post
-      %}style="display:none;"
-      {%
-      endunless
-      %}
-    >
-      KO
-    </button>
-  </div>
-
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
     {% if page.description %}
@@ -106,11 +77,6 @@ script_includes:
         </span>
 
         <div>
-          <!-- language indicator -->
-          <span class="badge bg-secondary me-2"
-            >{{ page.language | default: 'en' | upcase }}</span
-          >
-
           <!-- pageviews -->
           {% if site.pageviews.provider and
           site.analytics[site.pageviews.provider].id %}

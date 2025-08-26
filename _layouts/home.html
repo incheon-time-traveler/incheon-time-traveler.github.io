@@ -5,22 +5,6 @@ refactor: true
 
 {% include lang.html %}
 
-<div class="mb-3">
-  <button id="btn-all" class="btn btn-outline-secondary btn-sm">ALL</button>
-  <button
-    id="btn-en"
-    class="btn {% if selected_lang == 'en' %}active{% endif %} btn-outline-secondary btn-sm"
-  >
-    EN
-  </button>
-  <button
-    id="btn-ko"
-    class="btn {% if selected_lang == 'ko' %}active{% endif %} btn-outline-secondary btn-sm"
-  >
-    KO
-  </button>
-</div>
-
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in site.posts %}
   <article
@@ -68,11 +52,6 @@ refactor: true
                 forloop.last -%},{%- endunless -%} {% endfor %}
               </span>
               {% endif %}
-
-              <!-- language indicator -->
-              <span class="badge bg-secondary ms-2"
-                >{{ post.language | default: 'en' | upcase }}</span
-              >
             </div>
 
             {% if post.pin %}

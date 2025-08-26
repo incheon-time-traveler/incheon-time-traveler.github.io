@@ -4,5 +4,5 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> [You can check posts written before 2025 here](https://velog.io/@gongsam/posts)
+> 이 링크에서 시간탐험대 어플을 확인해보세요!
 {: .prompt-tip }
